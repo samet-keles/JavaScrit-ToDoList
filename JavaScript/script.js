@@ -3,6 +3,7 @@ function newElement() {
     let li = document.createElement('li');
     let inputValue = document.querySelector('#task').value;
     let text = document.createTextNode(inputValue);
+
     li.appendChild(text);
    
     if (inputValue === "" || inputValue === " " || inputValue === "  " || inputValue === "    " || inputValue === "     ") {
