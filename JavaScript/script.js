@@ -4,12 +4,31 @@ function newElement() {
     let inputValue = document.querySelector('#task').value;
     let text = document.createTextNode(inputValue);
     li.appendChild(text);
-
-    if (inputValue ==="") {
-        alert("Listeye boş ekleme yapamazsınız!");
+   
+    if (inputValue === "" || inputValue === " " || inputValue === "  " || inputValue === "    " || inputValue === "     ") {
+        const errorDOM = document.querySelector("#error")
+        const errorFunction = (errMessage) => `
+        <div class="alert alert-danger text-center" role="alert">
+        ${errMessage}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        `
+        errorDOM.innerHTML = errorFunction("Listeye boş ekleme yapamazsınız!")
     }
     else {
         document.querySelector("#list").appendChild(li);
+        const successDOM = document.querySelector("#success")
+        const successFunction = (sucMessage) => `
+        <div class="alert alert-success text-center" role="alert">
+        ${sucMessage}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        `
+        successDOM.innerHTML = successFunction ("Listeye eklendi.")
     }
     document.querySelector("#task").value="";
     
